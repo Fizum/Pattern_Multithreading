@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryTask\LibraryTask.csproj">
+      <Project>{bac5a4b7-af78-4f28-9a2f-d2a20697dde3}</Project>
+      <Name>LibraryTask</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

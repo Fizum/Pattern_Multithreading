@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pattern_Multithreading"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="280.344" Width="277.334" FontSize="16" FontFamily="Sitka Text">
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF0083FF"/>
+                <GradientStop Color="#FFFF0202" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button x:Name="Btn_avvia" Content="Start" HorizontalAlignment="Left" Margin="69,69,0,0" VerticalAlignment="Top" Width="129" Click="Btn_avvia_Click" Height="27"/>
+        <Button x:Name="Btn_ferma" Content="Stop" HorizontalAlignment="Left" Margin="69,136,0,0" VerticalAlignment="Top" Width="129" Click="Btn_ferma_Click" Height="25"/>
+        <Label x:Name="Lbl_visualizza" Content="0" HorizontalAlignment="Left" Margin="69,101,0,0" VerticalAlignment="Top" Width="129"/>
+
     </Grid>
 </Window>

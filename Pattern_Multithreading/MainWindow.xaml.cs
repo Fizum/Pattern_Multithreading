@@ -1,7 +1,9 @@
-﻿using System;
+﻿using LibraryTask;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +25,31 @@ namespace Pattern_Multithreading
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+		CancellationTokenSource ct;
+
+		private async void Btn_avvia_Click(object sender, RoutedEventArgs e)
+		{
+			ct = new CancellationTokenSource();
+			worker_async wrk = new worker_async(ct,10,1000);
+			
+			//IProgress<int> progress = new Progress<int>(UpdateUI);
+			//Workerprogress wrk = new Workerprogress(ct, 10, 1000, progress);
+			await wrk.start();
+			MessageBox.Show("Mi dimentico del thread secondario e non attendo il thread secondario per visualizzare questo messaggio");
+		}
+
+		private void UpdateUI(int i)
+		{
+			Lbl_visualizza.Content = i.ToString();
+		}
+
+		private void Btn_ferma_Click(object sender, RoutedEventArgs e)
+		{
+			if(ct!=null)
+			{
+				ct.Cancel();
+			}
 		}
 	}
 }
