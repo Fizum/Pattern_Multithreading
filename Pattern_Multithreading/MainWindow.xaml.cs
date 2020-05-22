@@ -26,12 +26,13 @@ namespace Pattern_Multithreading
 		{
 			InitializeComponent();
 		}
+
 		CancellationTokenSource ct;
 
 		private async void Btn_avvia_Click(object sender, RoutedEventArgs e)
 		{
 			ct = new CancellationTokenSource();
-			worker_async wrk = new worker_async(ct,10,1000);
+            worker_async wrk = new worker_async(ct, 10, 1000);
 			
 			//IProgress<int> progress = new Progress<int>(UpdateUI);
 			//Workerprogress wrk = new Workerprogress(ct, 10, 1000, progress);
@@ -46,10 +47,8 @@ namespace Pattern_Multithreading
 
 		private void Btn_ferma_Click(object sender, RoutedEventArgs e)
 		{
-			if(ct!=null)
-			{
+            if (ct != null)
 				ct.Cancel();
-			}
 		}
 	}
 }

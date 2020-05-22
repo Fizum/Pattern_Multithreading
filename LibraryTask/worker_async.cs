@@ -10,13 +10,13 @@ namespace LibraryTask
     {
 		CancellationTokenSource _ct;
 		int _max;
-		int _ritardo;
+		int _delay;
 
-		public worker_async(CancellationTokenSource ct, int max, int ritardo)
+		public worker_async(CancellationTokenSource ct, int max, int delay)
 		{
 			_ct = ct;
 			_max = max;
-			_ritardo = ritardo;
+			_delay = delay;
 		}
 
 		public async Task start()
@@ -28,11 +28,9 @@ namespace LibraryTask
 		{
 			for (int i = 0; i < _max; i++)
 			{
-				Task.Delay(_ritardo);
+				Task.Delay(_delay);
 				if (_ct.IsCancellationRequested)
-				{
 					break;
-				}
 			}
 
 		}

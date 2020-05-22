@@ -8,13 +8,13 @@ namespace LibraryTask
     {
 		CancellationTokenSource _ct;
 		int _max;
-		int _ritardo;
+		int _delay;
 
-		public Worker(CancellationTokenSource ct, int max, int ritardo)
+		public Worker(CancellationTokenSource ct, int max, int delay)
 		{
 			_ct = ct;
 			_max = max;
-			_ritardo = ritardo;
+			_delay = delay;
 		}
 
 		public void start()
@@ -24,13 +24,11 @@ namespace LibraryTask
 
 		private void DoWork()
 		{
-			for(int i=0; i< _max; i++)
+            for (int i = 0; i < _max; i++)
 			{
-				Task.Delay(_ritardo);
-				if(_ct.IsCancellationRequested)
-				{
+				Task.Delay(_delay);
+                if (_ct.IsCancellationRequested)
 					break;
-				}
 			}
 
 		}

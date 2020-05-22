@@ -9,15 +9,15 @@ namespace LibraryTask
     public class Workerprogress
     {
 		CancellationTokenSource _ct;
-		IProgress<int> _progress;
+        IProgress<int> _progress;
 		int _max;
-		int _ritardo;
+		int _delay;
 
-		public Workerprogress(CancellationTokenSource ct, int max, int ritardo, IProgress<int> progress)
+		public Workerprogress(CancellationTokenSource ct, int max, int delay, IProgress<int> progress)
 		{
 			_ct = ct;
 			_max = max;
-			_ritardo = ritardo;
+			_delay = delay;
 			_progress = progress;
 		}
 
@@ -32,7 +32,7 @@ namespace LibraryTask
 			for (int i = 0; i < _max; i++)
 			{
 				NotifyProgress(_progress, i);
-				Task.Delay(_ritardo);
+				Task.Delay(_delay);
 				if (_ct.IsCancellationRequested)
 				{
 					break;
