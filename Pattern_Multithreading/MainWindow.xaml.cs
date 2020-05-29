@@ -28,11 +28,14 @@ namespace Pattern_Multithreading
 		}
 
 		CancellationTokenSource ct;
+        Semaphore sem = new Semaphore(1, 2);
 
 		private async void Btn_avvia_Click(object sender, RoutedEventArgs e)
 		{
 			ct = new CancellationTokenSource();
-            worker_async wrk = new worker_async(ct, 10, 1000);
+            //worker_async wrk = new worker_async(ct, 10, 1000);
+            IProgress<int> progress = new Progress<int>(UpdateUI);
+            WorkerProgressAsync wrk = new WorkerProgressAsync(sem, ct, 100, 2000, progress);
 			
 			//IProgress<int> progress = new Progress<int>(UpdateUI);
 			//Workerprogress wrk = new Workerprogress(ct, 10, 1000, progress);
